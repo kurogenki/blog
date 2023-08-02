@@ -16,9 +16,14 @@
                 </div>
             @endforeach
         </div>
+        <h2 class='create'>
+            <a href="/posts/create">新規作成</a>
+        </h2>
+
         <h2 class='title'>
             <a href="/posts/{{ $post->id }}">{{ $post->title }}</a>
         </h2>
+
         <div class='paginate'>
             {{ $posts->links() }}
         </div>
