@@ -49,4 +49,21 @@ class PostController extends Controller
         // 新規作成したBlogのIDを引数にリダイレクト。
         return redirect('/posts/' . $post->id);
     }
+
+    public function edit(Post $post)
+    {
+        return view('posts.edit')->with(['post' => $post]);
+    }
+
+    public function update(PostRequest $request, Post $post)
+    {
+        $input_post = $request['post'];
+
+        $post->title = $input_post['title'];
+        $post->body = $input_post['body'];
+        $post->save();
+        // $post->fill($input_post)->save();
+
+        return redirect('/posts/' . $post->id);
+    }
 }
